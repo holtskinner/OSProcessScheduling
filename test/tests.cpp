@@ -37,24 +37,78 @@ class GradeEnvironment : public testing::Environment {
   }
 };
 
+// Load Process Control Block Test Cases
+
 TEST(load_process_control_blocks, nullFilePath) {
-  dyn_array_t *da = load_process_control_blocks(NULL);
-  ASSERT_EQ(da, (dyn_array_t *)NULL);
+  dyn_array_t *array = load_process_control_blocks(NULL);
+  ASSERT_EQ(array, (dyn_array_t *)NULL);
+}
+
+TEST(load_process_control_blocks, emptyFilePath) {
+  dyn_array_t *array = load_process_control_blocks("");
+  ASSERT_EQ(array, (dyn_array_t *)NULL);
+}
+
+TEST(load_process_control_blocks, goodFile) {
+  const char *src_file = "input.txt";
+  dyn_array_t *array = load_process_control_blocks(src_file);
+  ASSERT_NE(array, (dyn_array_t *)NULL);
+  free(array);
+}
+
+// First Come First Served Test Cases
+
+TEST(first_come_first_serve, nullQueue) {
+  dyn_array_t *ready_queue = NULL;
+  ScheduleResult_t *result = new ScheduleResult_t;
+  bool output = first_come_first_serve(ready_queue, result);
+  ASSERT_EQ(output, false);
+}
+
+TEST(first_come_first_serve, nullResult) {
+  dyn_array_t *ready_queue =
+      dyn_array_create(0, sizeof(ProcessControlBlock_t), NULL);
+  ScheduleResult_t *result = NULL;
+  bool output = first_come_first_serve(ready_queue, result);
+  ASSERT_EQ(output, false);
+}
+
+TEST(first_come_first_serve, goodInput) {
+  dyn_array_t *ready_queue =
+      dyn_array_create(0, sizeof(ProcessControlBlock_t), NULL);
+  ScheduleResult_t *result = new ScheduleResult_t;
+  // fill with data
+  bool output = first_come_first_serve(ready_queue, result);
+  ASSERT_EQ(output, true);
+}
+
+// Priority Queue Test Cases
+
+TEST(priority, nullQueue) {
+  dyn_array_t *ready_queue = NULL;
+  ScheduleResult_t *result = new ScheduleResult_t;
+  bool output = priority(ready_queue, result);
+  ASSERT_EQ(output, false);
+}
+
+TEST(priority, nullResult) {
+  dyn_array_t *ready_queue =
+      dyn_array_create(0, sizeof(ProcessControlBlock_t), NULL);
+  ScheduleResult_t *result = NULL;
+  bool output = priority(ready_queue, result);
+  ASSERT_EQ(output, false);
+}
+
+TEST(priority, goodInput) {
+  dyn_array_t *ready_queue =
+      dyn_array_create(0, sizeof(ProcessControlBlock_t), NULL);
+  ScheduleResult_t *result = new ScheduleResult_t;
+  // fill with data
+  bool output = priority(ready_queue, result);
+  ASSERT_EQ(output, true);
 }
 
 int main(int argc, char **argv) {
   ::testing::InitGoogleTest(&argc, argv);
   return RUN_ALL_TESTS();
 }
-
-// TEST(block_store_create, create) {
-//   block_store_t *bs = NULL;
-//   bs = block_store_create();
-//   ASSERT_NE(nullptr, bs)
-//       << "block_store_create returned NULL when it should not have\n";
-//   // The below line will only run if the block store was created
-//   successfully.
-//   block_store_destroy(bs);
-
-//   score += 10;
-// }
