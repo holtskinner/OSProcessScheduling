@@ -1,4 +1,4 @@
-cmake_minimum_required(VERSION 2.8)
+cake_minimum_required(VERSION 2.8)
 # Set the project name variable to project1.
 
 # Add your CMAKE_C_FLAGS AND CMAKE_SXX_FLAGS here

@@ -20,8 +20,8 @@ bool first_come_first_serve(dyn_array_t *ready_queue, ScheduleResult_t *result) 
 
 bool priority(dyn_array_t *ready_queue, ScheduleResult_t *result) {
     // You need to remove this when you begin implementation.
-    abort();  // replace me with implementation.
-    return false;   
+   abort();  // replace me with implementation.
+   return false;   
 }
 
 #ifdef GRAD_TESTS
