@@ -49,10 +49,10 @@ bool priority(dyn_array_t *ready_queue, ScheduleResult_t *result);
 // \param result used for first come first serve stat tracking \ref ScheduleResult_t
 // \param the quantum
 // \return true if function ran successful else false for an error
-bool round_robin(dyn_array_t *ready_queue, ScheduleResult_t *result, size_t quantum);#endif
+bool round_robin(dyn_array_t *ready_queue, ScheduleResult_t *result, size_t quantum);
 #endif
 
 #ifdef __cplusplus
 }
 #endif
-
+#endif
