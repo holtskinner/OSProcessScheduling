@@ -14,13 +14,10 @@ void virtual_cpu(ProcessControlBlock_t *process_control_block) {
 
 bool first_come_first_serve(dyn_array_t *ready_queue,
                             ScheduleResult_t *result) {
-  // You need to remove this when you begin implementation.
   return false;
 }
 
 bool priority(dyn_array_t *ready_queue, ScheduleResult_t *result) {
-  // You need to remove this when you begin implementation.
-
   return false;
 }
 

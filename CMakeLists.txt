@@ -7,8 +7,8 @@ project(project1)
 # You should include -Wall -Werror -Wshadow
 # Make SURE to use -std=c11 and -std=c++11 where relevant.
 # -Wall -Wextra -Wshadow -Werror
-set(CMAKE_C_FLAGS "-std=c11  -I../include -g")
-set(CMAKE_CXX_FLAGS "-std=c++11 -I../include -g")
+set(CMAKE_C_FLAGS "-std=c11 -Wall -Wextra -Wshadow -Werror -I../include -g")
+set(CMAKE_CXX_FLAGS "-std=c++11 -Wall -Wextra -Wshadow -Werror -I../include -g")
 
 # Add our include directory to CMake's search paths.
 find_package(GTest REQUIRED)
